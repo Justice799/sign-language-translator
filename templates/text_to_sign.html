@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text to Sign Translator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        nav {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+        }
+        nav h1 { margin: 0 20px; }
+        nav img { height: 50px; margin-right: 10px; }
+        
+        .container {
+            flex: 1;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        form { margin-bottom: 20px; }
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover { background-color: #2980b9; }
+        
+        /* Back Button Styling */
+        .back-button {
+            display: inline-block;
+            padding: 10px 18px;
+            background-color: #2ecc71;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        .back-button:hover {
+            background-color: #27ae60;
+        }
+
+        /* Video Output Container */
+        .video-output {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+        }
+        
+        /* Footer now scrolls with page */
+        .footer {
+            background-color: #2c3e50;
+            color: #fff;
+            text-align: left;
+            padding: 10px;
+            width: 100%;
+            position: relative; /* changed from fixed */
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <img src="static/images/logo2.jpg" alt="logo">
+        <h1>Sign Language Detector</h1>
+    </nav>
+    <div class="container">
+        <h1>Text to Sign Translator</h1>
+        
+        <!-- Text Input Form -->
+        <form id="signForm">
+            <input type="text" name="text" placeholder="Enter a sentence (e.g., hello name)" required>
+            <button type="submit">Generate Sign</button>
+        </form>
+
+        <!-- Video Output Area -->
+        <div class="video-output" id="videoContainer"></div>
+
+        <!-- Back Button -->
+        <a href="/" class="back-button">⬅ Back to Home</a>
+    </div>
+
+    <div class="footer">
+        <p>Copyright © 2024</p>
+    </div>
+
+    <script>
+        document.getElementById('signForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const text = document.querySelector('input[name="text"]').value.trim();
+            if (!text) return;
+
+            // Create a fresh video stream each time
+            const streamUrl = `/sign_video_stream?text=${encodeURIComponent(text)}&t=${Date.now()}`;
+            document.getElementById('videoContainer').innerHTML = `
+                <img src="${streamUrl}" width="640" height="480" alt="Sign Language Output">
+            `;
+
+            // Scroll smoothly to the video output
+            document.getElementById('videoContainer').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>

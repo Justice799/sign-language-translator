@@ -1,0 +1,45 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+
+# Flask instance folder
+instance/
+
+# Flask cache and logs
+*.log
+*.tmp
+
+# MediaPipe cache
+mediapipe/
+
+# Model and data files
+*.pkl
+*.pickle
+*.h5
+*.joblib
+*.mp4
+*.avi
+*.mov
+
+# Environment variables
+.env
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE and editor folders
+.vscode/
+.idea/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Build and dist folders
+build/
+dist/
