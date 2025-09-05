@@ -1,45 +1,27 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
+# Videos and large binaries
+data_words.zip
+words/
+letters/
+*.mp4
+*.mov
+*.avi
+
+# Models and data files
+cnn_data.pickle
+data.pickle
+*.pickle
+*.pkl
+*.h5
+*.joblib
+*.pt
+*.onnx
 
 # Virtual environment
 venv/
-env/
 
-# Flask instance folder
-instance/
+# Git internal files
+.git/objects/pack/*.pack
 
-# Flask cache and logs
-*.log
-*.tmp
-
-# MediaPipe cache
-mediapipe/
-
-# Model and data files
-*.pkl
-*.pickle
-*.h5
-*.joblib
-*.mp4
-*.avi
-*.mov
-
-# Environment variables
-.env
-
-# OS generated files
-.DS_Store
-Thumbs.db
-
-# IDE and editor folders
-.vscode/
-.idea/
-
-# Jupyter Notebook checkpoints
-.ipynb_checkpoints/
-
-# Build and dist folders
-build/
-dist/
+# Comments for clarity
+# Note: Large video files and model outputs are stored externally (e.g., local drive or cloud storage).
+# The venv/ directory contains Python dependencies like TensorFlow, JAX, and Mediapipe libraries.
